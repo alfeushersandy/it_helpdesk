@@ -8,6 +8,7 @@ use App\Models\Departemen;
 use App\Models\Lokasi;
 use Illuminate\Support\Str;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use Carbon\Carbon;
 
 class TiketController extends Controller
 {
@@ -55,6 +56,7 @@ class TiketController extends Controller
 
         $tiket = Ticket::create([
                 'no_ticket' => $notiket,
+                'tanggal' => Carbon::now()->format('Y-m-d'),
                 'client_name' => $request->client_name,
                 'id_lokasi' => $request->id_lokasi,
                 'id_departemen' => $request->id_departemen,
