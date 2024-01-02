@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TelegramBotController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LokasiController;
+use App\Http\Controllers\Admin\DepartemenController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TelegramController;
+use App\Http\Controllers\TiketController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +21,14 @@ use App\Http\Controllers\Admin\LokasiController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class);
 
 
 Route::get('/messages', TelegramBotController::class, '__invoke');
 
 Route::resource('/dashboard', DashboardController::class);
 Route::resource('/lokasi', LokasiController::class);
+Route::resource('/dept', DepartemenController::class);
+Route::resource('/users', UserController::class);
+Route::resource('/telebot', TelegramController::class);
+Route::resource('/tiket', TiketController::class);

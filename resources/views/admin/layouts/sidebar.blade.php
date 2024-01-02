@@ -40,26 +40,26 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{route('lokasi.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Master Lokasi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="{{route('dept.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Master Departemen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="{{route('users.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Managemen</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item menu-open">
+          {{-- <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -81,9 +81,9 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="{{route('tiket.index')}}" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
                 Helpdesk Ticket

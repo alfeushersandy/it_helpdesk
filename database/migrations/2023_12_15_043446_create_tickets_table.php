@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('client_name');
             $table->unsignedBigInteger('id_lokasi');
             $table->unsignedBigInteger('id_departemen');
+            $table->text('problem');
             $table->unsignedBigInteger('id_user')->nullable();
             $table->time('t_exection')->nullable();
             $table->time('t_finish')->nullable();
