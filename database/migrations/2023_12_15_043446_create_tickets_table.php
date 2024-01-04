@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('no_ticket')->unique();
             $table->date('tanggal');
             $table->string('client_name');
+            $table->string('client_no_hp');
             $table->unsignedBigInteger('id_lokasi');
             $table->unsignedBigInteger('id_departemen');
             $table->text('problem');
