@@ -78,7 +78,7 @@ class TiketController extends Controller
             Telegram::sendMessage([
                 'chat_id' => '-4079041421',
                 'parse_mode' => 'html',
-                'text' => "Dear <b>IT Team</b> \nAda ticket baru.\n\n<b>No Ticket:</b> $tiket->no_ticket \n<b>Nama Client</b>: $tiket->client_name \n<b>Lokasi</b>: $tiket->id_lokasi \n<b>Departemen</b>: $tiket->id_departemen \n<b>Keluhan</b>: $tiket->problem \n\nMohon tim terkait menindak lanjuti, Terima Kasih"
+                'text' => "Dear <b>IT Team</b> \nAda ticket baru.\n\n<b>No Ticket:</b> $tiket->no_ticket \n<b>Nama Client</b>: $tiket->client_name \n<b>No Hp</b>: $tiket->client_no_hp \n<b>Lokasi</b>: $tiket->id_lokasi \n<b>Departemen</b>: $tiket->id_departemen \n<b>Keluhan</b>: $tiket->problem \n\nMohon tim terkait menindak lanjuti, Terima Kasih"
             ]);
         }
 
