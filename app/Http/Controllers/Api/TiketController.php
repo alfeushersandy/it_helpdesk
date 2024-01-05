@@ -75,6 +75,7 @@ class TiketController extends Controller
                 'id_lokasi' => $request->id_lokasi,
                 'id_departemen' => $request->id_departemen,
                 'problem' => $request->problem,
+                'email' => $request->email,
         ]);
 
         if($tiket){
