@@ -9,6 +9,8 @@ use App\Models\Lokasi;
 use Illuminate\Support\Str;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
 
 class TiketController extends Controller
 {
@@ -57,6 +59,8 @@ class TiketController extends Controller
         $tiket = Ticket::create([
                 'no_ticket' => $notiket,
                 'tanggal' => Carbon::now()->format('Y-m-d'),
+                'client_no_hp' => $request->client_no_hp,
+                'email' => $request->email,
                 'client_name' => $request->client_name,
                 'id_lokasi' => $request->id_lokasi,
                 'id_departemen' => $request->id_departemen,
@@ -66,10 +70,17 @@ class TiketController extends Controller
         if($tiket){
             Telegram::sendMessage([
                 'chat_id' => '-4079041421',
-                'parse_mode' => 'html',
-                'text' => "Dear <b>IT Team</b> \nAda ticket baru.\n\n<b>No Ticket:</b> $tiket->no_ticket \n<b>Nama Client</b>: $tiket->client_name \n<b>Lokasi</b>: $tiket->id_lokasi \n<b>Departemen</b>: $tiket->id_departemen \n<b>Keluhan</b>: $tiket->problem \n\nMohon tim terkait menindak lanjuti, Terima Kasih"
+                'text' => "Dear IT Team \nAda ticket baru.\n\nNo Ticket: $tiket->no_ticket \nNama Client: $tiket->client_name \nLokasi: $tiket->id_lokasi \nDepartemen: $tiket->id_departemen \nKeluhan: $tiket->problem \n\nMohon tim terkait menindak lanjuti, Terima Kasih"
             ]);
         }
+
+        $data = [
+            'name' => $tiket->client_name,
+            'body' => "<b>No Ticket:</b> $tiket->no_ticket <br><b>Nama Client</b>: $tiket->client_name <br><b>No Hp</b>: $tiket->client_no_hp <br><b>Lokasi</b>: $tiket->id_lokasi <br><b>Departemen</b>: $tiket->id_departemen <br><b>Keluhan</b>: $tiket->problem"
+        ];
+       
+        Mail::to($tiket->email)->send(new SendEmail($data));
+
 
         return back()->with('toast_success', 'Tiket Berhasil dibuat');
     }

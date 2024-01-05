@@ -14,6 +14,9 @@ use Illuminate\Support\Str;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
+
 class TiketController extends Controller
 {
     /**
@@ -81,6 +84,13 @@ class TiketController extends Controller
                 'text' => "Dear <b>IT Team</b> \nAda ticket baru.\n\n<b>No Ticket:</b> $tiket->no_ticket \n<b>Nama Client</b>: $tiket->client_name \n<b>No Hp</b>: $tiket->client_no_hp \n<b>Lokasi</b>: $tiket->id_lokasi \n<b>Departemen</b>: $tiket->id_departemen \n<b>Keluhan</b>: $tiket->problem \n\nMohon tim terkait menindak lanjuti, Terima Kasih"
             ]);
         }
+
+        $data = [
+            'name' => $tiket->client_name,
+            'body' => "<b>No Ticket:</b> $tiket->no_ticket <br><b>Nama Client</b>: $tiket->client_name <br><b>No Hp</b>: $tiket->client_no_hp <br><b>Lokasi</b>: $tiket->id_lokasi <br><b>Departemen</b>: $tiket->id_departemen <br><b>Keluhan</b>: $tiket->problem"
+        ];
+       
+        Mail::to($tiket->email)->send(new SendEmail($data));
 
         //return response
         return new TiketResource(true, 'Tiket Berhasil dibuat, silahkan cek email anda!', $tiket);

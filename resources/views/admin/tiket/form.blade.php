@@ -20,10 +20,18 @@
               <input type="text" class="form-control form-control-border" name="client_name" id="exampleInputBorder" placeholder="masukkan Nama Client">
             </div>
             <div class="form-group">
+              <label for="exampleInputBorder">email</label>
+              <input type="email" class="form-control form-control-border" name="email" id="exampleInputBorder" placeholder="masukkan Nama Client">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputBorder">No HP</label>
+              <input type="text" class="form-control form-control-border" name="client_no_hp" id="exampleInputBorder" placeholder="masukkan Nama Client">
+            </div>
+            <div class="form-group">
               <label for="exampleInputBorder">Lokasi</label>
               <select class="custom-select form-control-border" id="exampleSelectBorder" name="id_lokasi">
                 @foreach ($lokasi as $item)
-                  <option value={{$item->nama_lokasi}}>{{$item->nama_lokasi}}</option>
+                  <option value="{{$item->nama_lokasi}}">{{$item->nama_lokasi}}</option>
                 @endforeach
               </select>
             </div>
@@ -31,7 +39,7 @@
               <label for="exampleInputBorder">Departemen</label>
               <select class="custom-select form-control-border" id="exampleSelectBorder" name="id_departemen">
                 @foreach ($departemen as $item)
-                  <option value={{$item->departemen}}>{{$item->departemen}}</option>
+                  <option value="{{$item->departemen}}">{{$item->departemen}}</option>
                 @endforeach
               </select>
             </div>

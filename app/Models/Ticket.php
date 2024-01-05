@@ -13,6 +13,7 @@ class Ticket extends Model
         'no_ticket',
         'tanggal',
         'client_no_hp',
+        'email',
         'client_name',
         'id_lokasi',
         'id_departemen',

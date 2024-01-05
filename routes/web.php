@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\TelegramController;
 use App\Http\Controllers\TiketController;
 use App\Http\Controllers\HomeController;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +35,13 @@ Route::resource('/dept', DepartemenController::class);
 Route::resource('/users', UserController::class);
 Route::resource('/telebot', TelegramController::class);
 Route::resource('/tiket', TiketController::class);
+Route::get('/send-email',function(){
+    $data = [
+        'name' => 'Abed',
+        'body' => 'Testing Kirim Email di Santri Koding'
+    ];
+   
+    Mail::to('alfeusputra@gmail.com')->send(new SendEmail($data));
+   
+    dd("Email Berhasil dikirim.");
+});
