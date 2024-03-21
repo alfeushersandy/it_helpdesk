@@ -10,7 +10,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "*",
         "irazasyed/telegram-bot-sdk": "^3.13",
-        "laravel/fortify": "1.16.0",
+        "laravel/fortify": "^1.20",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",

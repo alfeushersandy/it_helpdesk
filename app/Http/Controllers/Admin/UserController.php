@@ -40,7 +40,8 @@ class UserController extends Controller
             'name'     => $request->name,
             'username'     => $request->username,
             'email'    => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'status' => 'Unactive'
         ]);
 
         return back()->with('toast_success', 'data berhasil disimpan');

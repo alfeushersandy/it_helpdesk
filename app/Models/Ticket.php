@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ticket extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'no_ticket',
         'tanggal',
@@ -22,7 +22,9 @@ class Ticket extends Model
         't_exection',
         't_finish',
         'tgl_finish',
-        'status'
+        'status',
+        'user_appr',
+        't_approve',
     ];
 
     public function departemen()
@@ -33,5 +35,10 @@ class Ticket extends Model
     public function lokasi()
     {
         return $this->belongsTo(Lokasi::class, 'id_lokasi');
+    }
+
+    public function userApprove()
+    {
+        return $this->belongsTo(User::class, 'user_appr');
     }
 }

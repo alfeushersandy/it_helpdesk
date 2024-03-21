@@ -9,7 +9,7 @@
     Laporan Anda akan segera kami proses
     Berikut detail laporan anda: <br><br>
     {!! $data['body'] !!}
-    <br><br>
+    <br>
     Kami akan selalu update progress melalui email ini<br><br>
     Terima kasih<br>
     Administrator<br>

@@ -25,12 +25,15 @@ return new class extends Migration
             $table->time('t_finish')->nullable();
             $table->date('tgl_finish')->nullable();
             $table->string('status');
+            $table->unsignedBigInteger('user_appr')->nullable();
+            $table->timestamp('t_approve')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('id_lokasi')->references('id')->on('lokasis')->onDelete('cascade');
             $table->foreign('id_departemen')->references('id')->on('departemens')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_appr')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

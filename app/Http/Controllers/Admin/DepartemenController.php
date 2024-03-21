@@ -35,7 +35,8 @@ class DepartemenController extends Controller
         ]);
 
         Departemen::create([
-                    'departemen' => $request->departemen,
+            'departemen' => $request->departemen,
+            'status' => 'Active',
         ]);
 
         return back()->with('toast_success', 'data berhasil disimpan');

@@ -35,7 +35,8 @@ class LokasiController extends Controller
         ]);
 
         $lokasi = Lokasi::create([
-                    'nama_lokasi' => $request->nama_lokasi,
+            'nama_lokasi' => $request->nama_lokasi,
+            'status' => 'Active',
         ]);
 
         return back()->with('toast_success', 'data berhasil disimpan');
@@ -71,5 +72,23 @@ class LokasiController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function active(string $id)
+    {
+        $lokasi = Lokasi::find($id);
+
+        if ($lokasi->status == 'Deactive') {
+            $lokasi->update([
+                'status' => 'Active',
+            ]);
+        } else {
+            $lokasi->update([
+                'status' => 'Deactive',
+            ]);
+        }
+
+
+        return back()->with('toast_success', 'data berhasil disimpan');
     }
 }

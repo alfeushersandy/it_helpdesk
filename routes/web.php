@@ -29,19 +29,13 @@ Route::get('/', HomeController::class);
 
 Route::get('/messages', TelegramBotController::class, '__invoke');
 
-Route::resource('/dashboard', DashboardController::class);
-Route::resource('/lokasi', LokasiController::class);
-Route::resource('/dept', DepartemenController::class);
-Route::resource('/users', UserController::class);
-Route::resource('/telebot', TelegramController::class);
-Route::resource('/tiket', TiketController::class);
-Route::get('/send-email',function(){
-    $data = [
-        'name' => 'Abed',
-        'body' => 'Testing Kirim Email di Santri Koding'
-    ];
-   
-    Mail::to('alfeusputra@gmail.com')->send(new SendEmail($data));
-   
-    dd("Email Berhasil dikirim.");
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/dashboard', DashboardController::class);
+    Route::resource('/lokasi', LokasiController::class);
+    Route::resource('/dept', DepartemenController::class);
+    Route::resource('/users', UserController::class);
+    Route::resource('/telebot', TelegramController::class);
+    Route::resource('/tiket', TiketController::class);
+    Route::post("/lokasi/{id}/active", [LokasiController::class, "active"])->name("lokasi.active");
+    Route::post("/tiket/{id}/approve", [TiketController::class, "approve"])->name("tiket.approve");
 });
